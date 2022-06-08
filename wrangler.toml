@@ -1,0 +1,9 @@
+name = "audio-worker"
+account_id = "3155fad8c7de083cd71f4400bffc9e3c"
+route = "https://api.xbuss.ca/*"
+workers_dev = true
+main = "src/index.ts"
+compatibility_date = "2022-06-07"
+
+r2_buckets  = [{ binding = "AUDIO_BUCKET", bucket_name = "audio-editor", preview_bucket_name =  "preview-audio-editor" }]
+
