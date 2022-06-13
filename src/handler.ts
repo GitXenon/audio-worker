@@ -15,7 +15,9 @@ export async function handleGetAudio(request: any, env: any) {
 export async function handlePostAudio(request : any, env: any) {
   const { params } = request
 
-  await AUDIO_BUCKET.put(params.id, request.body);
+  await AUDIO_BUCKET.put(params.id, request.body, {
+    httpMetadata: request.headers
+  });
   const response = new Response(`Put ${params.id} successfully!`, {status: 200});
   response.headers.set("Access-Control-Allow-Origin", "*")
   return response
