@@ -1,5 +1,5 @@
 import { Router } from 'itty-router'
-import {handlePostAudio, handleGetAudio} from "./handler";
+import {handlePostAudio, handleGetAudio, websocketHandle} from "./handler";
 import { handleCors } from "./corshelper";
 
 export const PRESHARED_AUTH_HEADER_KEY = 'X-Custom-Auth-Key'
@@ -15,6 +15,7 @@ router.options('/audios/:id?', handleCors({ maxAge: 86400}))
 router.get('/audios/:id?', handleGetAudio)
 router.post('/audios/:id?', handlePostAudio)
 router.put('/audios/:id?', handlePostAudio)
+router.all('/websocket', websocketHandle)
 
 router.all("*", () => new Response("404, not found!", { status: 404 }))
 
